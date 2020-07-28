@@ -1,0 +1,27 @@
+\begin{table}[t]
+\resizebox{\linewidth}{!}{
+	\centering	
+	\begin{tabular}{CCCCCCC}
+		\hline
+		{} & {} & {} & {AP@IoU} & {} & {} & {}\\
+		{Method} & {0.1} & {0.2} & {0.3} & {0.4} & {0.5} & {Cls}\\
+		\hline
+		{FC-CASL 1024}	&	{53.2}	&	{47.6}	&	{37.8}	&	{27.0}	&	{17.2} 	&	{93.0}\\
+		{FC-CASL 2048} 	&	{55.0}	&	{48.8}	&	{37.9}	&	{26.6}	&	{16.3}	&	{95.6}\\
+		{CASL-Graph}	&	{58.0}	&	{51.5}	&	{40.5}	&	{28.9}	&	{19.7}	&	{95.0}\\
+		{Ours - MCASL} & {\textbf{62.2}} & {\textbf{56.8}} & {\textbf{47.0}} & {\textbf{36.2}} & {\textbf{27.6}} & {\textbf{96.6}}\\
+		\hline
+	\end{tabular}
+	}
+\caption{Using a graph with CASL -- last two rows --is more effective than using regular linear layers -- FC-CASL rows. However, M-CASL performs best at localization as well as classification.}
+\label{table_casl}
+\end{table}
+
+% casl graph 
+% 57.98	51.46	40.54	28.90	19.72	0.9495
+% fc casl 2048
+% 54.93	48.80	37.86	26.57	16.34	0.9557 
+% fc casl 1024
+% 53.15   47.58   37.82   27.02   17.25	0.9303
+% fc casl RELU
+
