@@ -121,8 +121,6 @@ def get_data(dataset, limit, all_classes, just_primary, gt_vec, k_vec, test_pair
         test_train_data = UCF_dataset(test_train_file, limit)
         test_data = UCF_dataset(test_file, None)
 
-    print train_file, test_train_file, test_file
-    raw_input()
     return train_data, test_train_data, test_data, n_classes, trim_preds
 
 def get_criterion(criterion_str,attention,class_weights_val,  loss_weights, multibranch, num_similar = 0):
