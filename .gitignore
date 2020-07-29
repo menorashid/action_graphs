@@ -52,7 +52,7 @@ writing
 *.npy
 contextlocnet-master
 gpu_flow-master
-TH14evalkit
+#TH14evalkit
 Charades
 UntrimmedNet-master
 arxiv_paper
