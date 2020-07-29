@@ -239,7 +239,7 @@ def fcasl(feat_dim):
                         det_test = det_test)
 
 def main():
-    pass
+    
     # baseline
     # thumos_ablation_table2([1,0,0],'percent_0.5')
 
@@ -249,8 +249,8 @@ def main():
     # # l1
     # thumos_ablation_table2([1,0,1],'percent_0.5')
 
-    # # l1+mcasl
-    # thumos_ablation_table2([1,1,1],'percent_0.5')
+    # l1+mcasl
+    thumos_ablation_table2([1,1,1],'percent_0.5')
 
     # # fcasl 1024
     # fcasl(1024)

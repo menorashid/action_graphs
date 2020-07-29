@@ -38,23 +38,26 @@ pip install -r requirements.txt
 ```
 
 ## Dataset
-Download UCF101 features extracted from Kinetrics pretrained i3D [UCF101 Features](https://www.dropbox.com/s/9t770jhcjqo3mmg/release_data.zip) (5.5 GB)
+Download features extracted from Kinetrics pretrained i3D 
+[UCF101 Features](https://www.dropbox.com/s/cjkfpq6n6l0zan4/i3d_features.tar.gz) (5.5 GB)
+[ActivityNet Features] TBD
+[Charades Features] TBD
 
 Run the following commands
 ```bash
 cd data
-unzip <path to data zip file>
+tar -xzvf <path to data tar file>
 ```
 
-Thank you so much to Sujoy Paul for originally sharing these features [here](https://github.com/sujoyp/wtalc-pytorch)
+Thank you so much to Sujoy Paul for originally sharing the UCF101 and ActivityNet features [here](https://github.com/sujoyp/wtalc-pytorch)
 
 ## Models
-To download the pretrained models go [here](https://www.dropbox.com/s/44ocinlmx8mp8v2/XX.zip) (XX MB)
+To download the pretrained models go [here](https://www.dropbox.com/s/eoz0946ifeac1wd/action_graphs.tar.gz) (90 MB)
 
 Run the following commands
 ```bash
 cd experiments
-unzip <path to models zip file>
+tar -xzvf <path to models tar file>
 ```
 <!-- Otherwise add the individual models to *experiments/*
 * [ActionGraphs on UCF101](https://www.dropbox.com/s/g0e7tj2r708eue1/horse_full_model_tps.dat)(36 MB)
@@ -62,20 +65,29 @@ unzip <path to models zip file>
 * [ActionGraphs on Charades](https://www.dropbox.com/s/3un0dild6xar8uf/horse_tps_model.dat)(34 MB)
  -->
 ## Testing
-To test pretrained model run the following line after commenting out the relevant code block
+To test pretrained model run the following line after uncommenting the relevant lines in main
 ```bash
 cd code
 python test_pretrained.py
 ```
 
 ## Training
-Script for training the full model with varying values of *d* as shown in Table 4 in the paper (comment out relevant lines in main):
+Script for training the full model with varying values of *d* as shown in Table 4 in the paper (uncomment relevant lines in main):
 ```bash
 cd code
 python exps_deno.py
 ```
-Script for training the models from Table 2 and Table 3 in the paper (comment out relevant lines in main):
+Script for training the models from Table 2 and Table 3 in the paper (uncomment relevant lines in main):
 ```bash
 cd code
 python exps_ablation_etc.py
 ```
+
+This will save and log training in the following dir
+```bash
+experiments/<model name>/<model params>/<training params>/
+```
+
+The output files would be similar to the pretrained model data shared above and include a .txt log file, .png graphs with losses and accuracy, and .pt model files. 
+
+Please email any questions to me (mhnrashid at ucdavis dot edu). I may not get around to looking at Git issues. Thank you for looking at our paper and code! 
