@@ -21,8 +21,19 @@ Download the code from GitHub:
 git clone https://github.com/menorashid/action_graphs.git
 cd action_graphs
 ```
-Install all needed requirements
+
+This repo requires Python 2.7. 
+
+It'll be easiest to set up a virtual environment for this repo. 
 ```bash
+pip install virtualenv
+virtualenv --python=/usr/bin/python2.6 <path/to/action_graphs_venv>
+```
+
+Activate virtual env and install all needed requirements
+```bash
+source <path/to/action_graphs_venv>/bin/activate
+cd <path/to/action_graph_git_repo>
 pip install -r requirements.txt
 ```
 
@@ -34,6 +45,8 @@ Run the following commands
 cd data
 unzip <path to data zip file>
 ```
+
+Thank you so much to Sujoy Paul for originally sharing these features [here] (https://github.com/sujoyp/wtalc-pytorch)
 
 ## Models
 To download the pretrained models go [here](https://www.dropbox.com/s/44ocinlmx8mp8v2/XX.zip) (XX MB)
