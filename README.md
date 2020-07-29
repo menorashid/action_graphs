@@ -71,6 +71,11 @@ cd code
 python test_pretrained.py
 ```
 
+Results would be printed and logged in log.txt file in a results folder in the relevant model folder
+```bash
+experiments/action_graphs_ucf/results_model_249_0_-0.9_-2/log.txt
+```
+
 ## Training
 Script for training the full model with varying values of *d* as shown in Table 4 in the paper (uncomment relevant lines in main):
 ```bash
