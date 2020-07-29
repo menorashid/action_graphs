@@ -95,116 +95,6 @@ def get_data(dataset, limit, all_classes, just_primary, gt_vec, k_vec, test_pair
             # test_train_data = UCF_dataset(test_train_file, limit)
         test_train_data =  UCF_dataset(test_train_file, limit)
         test_data =  UCF_dataset(test_file, None)
-    elif dataset =='activitynet_select':
-        dir_files = '../data/activitynet/train_test_files'
-        n_classes = 65
-        trim_preds = None
-        post_pends = ['','','']
-        train_file = os.path.join(dir_files, 'train_select')
-        test_train_file = os.path.join(dir_files, 'val_select')
-        test_file = os.path.join(dir_files, 'val_select')
-            
-        files = [train_file, test_train_file, test_file]
-
-        post_pends = [pp+'.txt' for pp in post_pends]
-        files = [file_curr+pp for file_curr,pp in zip(files,post_pends)]
-        
-        train_file, test_train_file, test_file = files
-        if num_similar>0:
-            train_data = UCF_dataset_withNumSimilar(train_file, limit, num_similar = num_similar)
-            # test_train_data =  UCF_dataset_withNumSimilar(test_train_file, limit, num_similar = num_similar)
-        else:
-            train_data = UCF_dataset(train_file, limit)
-            # test_train_data = UCF_dataset(test_train_file, limit)
-        test_train_data =  UCF_dataset(test_train_file, limit)
-        test_data =  UCF_dataset(test_file, None)  
-    elif dataset =='ucf_untf':
-        dir_files = '../data/ucf101/train_test_files'
-        n_classes = 20
-        trim_preds = None
-        post_pends = ['','','']
-        train_file = os.path.join(dir_files, 'train_untf')
-        test_train_file = os.path.join(dir_files, 'test_untf')
-        test_file = os.path.join(dir_files, 'test_untf')
-        
-        files = [train_file, test_train_file, test_file]
-
-        
-        post_pends = [pp+'.txt' for pp in post_pends]
-        files = [file_curr+pp for file_curr,pp in zip(files,post_pends)]
-        
-        train_file, test_train_file, test_file = files
-        train_data = UCF_dataset(train_file, limit)
-        test_train_data = UCF_dataset(test_train_file, limit)
-        test_data = UCF_dataset(test_file, None)
-    elif dataset == 'ucf_cooc_per_class':
-        cooc_str = '_cooc_per_class'
-        dir_files = '../data/ucf101/train_test_files'
-        n_classes = 20
-        trim_preds = None
-        post_pends = ['','','']
-        train_file = os.path.join(dir_files, 'train'+cooc_str)
-        test_train_file = os.path.join(dir_files, 'test'+cooc_str)
-        test_file = os.path.join(dir_files, 'test'+cooc_str)
-        
-        files = [train_file, test_train_file, test_file]
-        post_pends = [pp+'.txt' for pp in post_pends]
-        files = [file_curr+pp for file_curr,pp in zip(files,post_pends)]
-        
-        train_file, test_train_file, test_file = files
-        train_data = UCF_dataset_cooc_per_class_graph(train_file, limit)
-        test_train_data = UCF_dataset_cooc_per_class_graph(test_train_file, limit)
-        test_data = UCF_dataset_cooc_per_class_graph(test_file, None)
-
-    elif dataset.startswith('ucf_cooc'):
-        cooc_number = '_'.join(dataset.split('_')[2:])
-        cooc_str = '_cooc_'+cooc_number
-        dir_files = '../data/ucf101/train_test_files'
-        n_classes = 20
-        trim_preds = None
-        post_pends = ['','','']
-        train_file = os.path.join(dir_files, 'train'+cooc_str)
-        test_train_file = os.path.join(dir_files, 'test'+cooc_str)
-        test_file = os.path.join(dir_files, 'test'+cooc_str)
-        
-        files = [train_file, test_train_file, test_file]
-
-        
-        post_pends = [pp+'.txt' for pp in post_pends]
-        files = [file_curr+pp for file_curr,pp in zip(files,post_pends)]
-        
-        train_file, test_train_file, test_file = files
-        train_data = UCF_dataset_cooc_graph(train_file, limit)
-        test_train_data = UCF_dataset_cooc_graph(test_train_file, limit)
-        test_data = UCF_dataset_cooc_graph(test_file, None)
-
-    elif dataset == 'multithumos':
-        cooc_number = '_'.join(dataset.split('_')[2:])
-        cooc_str = '_cooc_'+cooc_number
-        dir_files = '../data/multithumos/train_test_files'
-        n_classes = 65
-        trim_preds = None
-        post_pends = ['','','']
-        train_file = os.path.join(dir_files, 'train')
-        test_train_file = os.path.join(dir_files, 'test')
-        test_file = os.path.join(dir_files, 'test')
-        
-        files = [train_file, test_train_file, test_file]
-
-        
-        post_pends = [pp+'.txt' for pp in post_pends]
-        files = [file_curr+pp for file_curr,pp in zip(files,post_pends)]
-        
-        train_file, test_train_file, test_file = files
-        # train_data = UCF_dataset(train_file, limit)
-        if num_similar>0:
-            train_data = UCF_dataset_withNumSimilar(train_file, limit, num_similar = num_similar, just_one = False)
-            # test_train_data =  UCF_dataset_withNumSimilar(test_train_file, limit, num_similar = num_similar)
-        else:
-            train_data = UCF_dataset(train_file, limit)
-        test_train_data = UCF_dataset(test_train_file, limit)
-        test_data = UCF_dataset(test_file, None)
-
     elif dataset.startswith('charades'):
         pre_pend = '_'.join(dataset.split('_')[1:])
         dir_files = '../data/charades/train_test_files'
@@ -231,6 +121,8 @@ def get_data(dataset, limit, all_classes, just_primary, gt_vec, k_vec, test_pair
         test_train_data = UCF_dataset(test_train_file, limit)
         test_data = UCF_dataset(test_file, None)
 
+    print train_file, test_train_file, test_file
+    raw_input()
     return train_data, test_train_data, test_data, n_classes, trim_preds
 
 def get_criterion(criterion_str,attention,class_weights_val,  loss_weights, multibranch, num_similar = 0):

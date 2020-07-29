@@ -10,21 +10,10 @@ def thumos(deno):
     criterion_str = 'MultiCrossEntropyMultiBranchWithL1_CASL'
     loss_weights = [1,1,1]
     plot_losses = True
-    det_test = True
 
-
-    lr = [0.001,0.001, 0.001]
-    multibranch = 1
+    # learning rate for [\phi, graph layer, final linear layer]
+    lr = [0.001,0.001, 0.001] 
     
-    branch_to_test = -2
-    print 'branch_to_test',branch_to_test
-    attention = True
-
-    k_vec = None
-
-    gt_vec = False
-    just_primary = False
-
     seed = 999
     torch.backends.cudnn.deterministic = True
     random.seed(seed)
@@ -32,52 +21,67 @@ def thumos(deno):
     torch.cuda.manual_seed_all(seed)
     np.random.seed(seed)
     
-    
-    
-    epoch_stuff = [50,50]
+    # string to switch between datasets
     dataset = 'ucf'
+    
+    #num segments to include per video during training. in case of memory problems
     limit  = None
+
+    # epoch_stuff = [num epochs after which to reduce lr, total num epochs]
+    epoch_stuff = [250,250]
     save_after = 50
+    # string to append to experiment folder
+    post_pend = 'denoExp'
+
+    test_after = 10 
+    # set det_test to False if localization results on val not needed during training
+    det_test = True
+
+    # model numbers to test.
+    model_nums = [249] 
     
+    # set test mode to true to test a trained model
     test_mode = False
-    save_outfs = False
     
+    save_outfs = False
     test_method = 'original'
     test_post_pend = '_'+test_method+'_class'
 
-    model_nums = [249]
-   
+    # number of similar class videos to contain in each training batch. imp when num classes>batchsize 
+    num_similar = 0
+    
     retrain = False
     viz_mode = False
     viz_sim = False
 
-    # post_pend = '_noBiasLastLayer'
-    
     network_params = {}
     network_params['deno'] = deno
     network_params['in_out'] = [2048,1024]
     network_params['feat_dim'] = [2048,1024]
     network_params['feat_ret']=True
- 
-    network_params['graph_size'] = 1
+
+    # graph_size controls number of videos per graph during training (see supp Fig 1)
+    network_params['graph_size'] = 1 
     network_params['method'] = 'cos'
     network_params['sparsify'] = 'percent_0.5'
+    attention = True
     network_params['graph_sum'] = attention
     network_params['non_lin'] = None
     network_params['aft_nonlin']='RL_L2'
     network_params['sigmoid'] = True
 
-    num_similar = 0
-    
-    post_pend = 'denoExp'
+    # default params. no need to change.
     first_thresh= 0
     class_weights = False
-    test_after = 10
     all_classes = False
-    
     second_thresh = -0.9
-    
     det_class = -1
+    multibranch = 1
+    branch_to_test = -2
+    k_vec = None
+    gt_vec = False
+    just_primary = False
+
     train_simple_mill_all_classes (model_name = model_name,
                         lr = lr,
                         dataset = dataset,
@@ -123,21 +127,11 @@ def activitynet(deno, gs = 1):
     plot_losses = True
 
     lr = [0.001,0.001, 0.001]
-    multibranch = 1
-
+    
     num_similar = 128
 
     batch_size = 256
     batch_size_val = 256
-
-    branch_to_test = -2
-    print 'branch_to_test',branch_to_test
-    attention = True
-
-    k_vec = None
-
-    gt_vec = False
-    just_primary = False
 
     seed = 999
     torch.backends.cudnn.deterministic = True
@@ -152,12 +146,13 @@ def activitynet(deno, gs = 1):
     dataset = 'activitynet'
     limit  = None
     save_after = 50
+    test_after = 10
     
-    test_mode = True
+    test_mode = False
     save_outfs = False
     
     test_method = 'original'
-    test_post_pend = '_'+test_method+'_class'
+    test_post_pend = '_'+test_method
 
     model_nums = [249]
     retrain = False
@@ -171,24 +166,27 @@ def activitynet(deno, gs = 1):
     network_params['in_out'] = [2048,1024]
     network_params['feat_dim'] = [2048,1024]
     network_params['feat_ret']=True
-  
     network_params['graph_size'] = gs
     network_params['method'] = 'cos'
     network_params['sparsify'] = 'percent_0.5'
+    attention = True
     network_params['graph_sum'] = attention
     network_params['non_lin'] = None
     network_params['aft_nonlin']='RL_L2'
     network_params['sigmoid'] = True
     
-    post_pend = 'gs1_changingSparsityAbs_'+str(num_similar)
+    post_pend = 'denoExp'
     class_weights = False
     first_thresh=0
-    
-    test_after = 10
     all_classes = False
-    
     second_thresh = -0.9
     det_class = -1
+    multibranch = 1
+    branch_to_test = -2
+    k_vec = None
+    gt_vec = False
+    just_primary = False
+
     train_simple_mill_all_classes (model_name = model_name,
                         lr = lr,
                         dataset = dataset,
@@ -232,7 +230,6 @@ def charades(deno,gs =1):
 
     model_name = 'graph_multi_video_with_L1_retF_tanh'
     criterion_str = 'MultiCrossEntropyMultiBranchWithL1_CASL'
-    # criterion_str = 'BinaryCrossEntropyMultiBranchWithL1_CASL'
     loss_weights = [1,1,1]
 
     dataset = 'charades_i3d_charades_both'
@@ -241,18 +238,12 @@ def charades(deno,gs =1):
     det_test = False
     plot_losses = True
 
-    # model_name = 'graph_multi_video_with_L1'
-    # criterion_str = 'BinaryCrossEntropyMultiBranchWithL1'
-    # loss_weights = [1,1]
-    # plot_losses = False
 
     batch_size = 256
     batch_size_val = 256
 
     lr = [0.001,0.001, 0.001]
-    # lr = [0.01,0.01, 0.01]
     multibranch = 1
-    # loss_weights = [1,1]
     
     branch_to_test = -2
     print 'branch_to_test',branch_to_test
@@ -275,8 +266,8 @@ def charades(deno,gs =1):
     epoch_stuff = [250,250]
     limit  = None
     save_after = 50
-    test_mode = True
-    save_outfs = True
+    test_mode = False
+    save_outfs = False
     
     # test_method = 'wtalc'
     # test_method = 'wtalc'
@@ -285,7 +276,7 @@ def charades(deno,gs =1):
     # test_method = 'best_worst_dot'
     # test_post_pend = '_'+test_method
     test_method = 'original'
-    test_post_pend = '_'+test_method+'_class_merged'
+    test_post_pend = '_'+test_method
 
     model_nums = [249]
     retrain = False
@@ -307,15 +298,11 @@ def charades(deno,gs =1):
     network_params['non_lin'] = None
     network_params['aft_nonlin']='RL_L2'
     network_params['sigmoid'] = True
-    # network_params['dropout'] = 0.8
-    # post_pend = ''
-    post_pend = 'changingSparsityAbs_numSim_'+str(num_similar)
-    # '_cwNo_justPos_MulNumClasses_numSim_'+str(num_similar)
-    # +'_sumnomean_noExclusiveCASL_NEW_noMax'
-
+    
+    post_pend = 'denoExp'
+    
     first_thresh=0
-    # scipy.special.logit(0.1)
-    # 
+    
     test_after = 50
     all_classes = False
     
@@ -363,30 +350,11 @@ def charades(deno,gs =1):
 
 def main():
     
-    for deno in [8]:
+    for deno in [1, 2, 4, 8, 'random']:
         thumos(deno)
-    # import torch.multiprocessing
-    # torch.multiprocessing.set_sharing_strategy('file_system')
+        # activitynet(deno)
+        # charades(deno)
 
-    # charades('random',gs = 16)
-    
-    # for gs in [2,4,8,16,32]:
-    #     charades('random',gs = gs)
-        # activitynet(1, gs =gs)
-
-    # for deno in ['random']:
-    #     charades(deno)
-    # for deno in [1,2,4]:
-    # thumos('random')
-    # for deno in [1,2,4]:
-    #     thumos(deno)
-
-    # multithumos_bce()
-    # charades_bce()
-    # charades_mce()
-    # graph_charades_other()
-    # graph_charades_32()
-    # graph_charades_everything_sim()
 
 
 
