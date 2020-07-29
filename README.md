@@ -46,7 +46,7 @@ cd data
 unzip <path to data zip file>
 ```
 
-Thank you so much to Sujoy Paul for originally sharing these features [here] (https://github.com/sujoyp/wtalc-pytorch)
+Thank you so much to Sujoy Paul for originally sharing these features [here](https://github.com/sujoyp/wtalc-pytorch)
 
 ## Models
 To download the pretrained models go [here](https://www.dropbox.com/s/44ocinlmx8mp8v2/XX.zip) (XX MB)
