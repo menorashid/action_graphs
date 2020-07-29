@@ -10,7 +10,7 @@ def thumos(deno):
     criterion_str = 'MultiCrossEntropyMultiBranchWithL1_CASL'
     loss_weights = [1,1,1]
     plot_losses = True
-    det_test = False
+    det_test = True
 
 
     lr = [0.001,0.001, 0.001]
@@ -34,7 +34,7 @@ def thumos(deno):
     
     
     
-    epoch_stuff = [250,250]
+    epoch_stuff = [50,50]
     dataset = 'ucf'
     limit  = None
     save_after = 50
@@ -69,7 +69,7 @@ def thumos(deno):
 
     num_similar = 0
     
-    post_pend = 'changingSparsityAbs_'+str(num_similar)
+    post_pend = 'denoExp'
     first_thresh= 0
     class_weights = False
     test_after = 10
@@ -320,10 +320,8 @@ def charades(deno,gs =1):
     all_classes = False
     
     second_thresh = -0.9
-    # scipy.special.logit(0.1)
     det_class = -1
-    # print 'this is it! are you ready????'
-    # raw_input()
+    
     train_simple_mill_all_classes (model_name = model_name,
                         lr = lr,
                         dataset = dataset,
@@ -363,18 +361,17 @@ def charades(deno,gs =1):
 
 
 
-
-
 def main():
-    # print 'hello'
-    # thumos_bce()
+    
+    for deno in [8]:
+        thumos(deno)
     # import torch.multiprocessing
     # torch.multiprocessing.set_sharing_strategy('file_system')
 
     # charades('random',gs = 16)
-    # for deno in [1,2,4,8]:
-    for gs in [2,4,8,16,32]:
-        charades('random',gs = gs)
+    
+    # for gs in [2,4,8,16,32]:
+    #     charades('random',gs = gs)
         # activitynet(1, gs =gs)
 
     # for deno in ['random']:
