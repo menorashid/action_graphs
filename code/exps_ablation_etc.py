@@ -56,7 +56,7 @@ def thumos_ablation_table2(loss_weights, casl_graph = False):
     model_nums = [249]
     # ,349,399,449,499]
     retrain = False
-    viz_mode = True
+    viz_mode = False
     viz_sim = False
 
     # post_pend = '_noBiasLastLayer'
