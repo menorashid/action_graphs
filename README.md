@@ -39,7 +39,9 @@ pip install -r requirements.txt
 
 ## Dataset
 Download features extracted from Kinetrics pretrained i3D 
-[UCF101 Features](https://www.dropbox.com/s/cjkfpq6n6l0zan4/i3d_features.tar.gz) (5.5 GB)
+[UCF101 Features (Dropbox link)](https://www.dropbox.com/s/cjkfpq6n6l0zan4/i3d_features.tar.gz) (5.5 GB)
+
+[UCF101 Features (Google Drive link)](https://drive.google.com/a/ucdavis.edu/uc?id=1TcrnAoW6BBOYsi9wnIxUnkAk4d_YlBkc&export=download) (5.5 GB)
 
 [ActivityNet Features]() (Will be uploaded soon)
 
@@ -54,7 +56,7 @@ tar -xzvf <path to data tar file>
 Thank you so much to Sujoy Paul for originally sharing the UCF101 and ActivityNet features [here](https://github.com/sujoyp/wtalc-pytorch)
 
 ## Models
-To download the pretrained models go [here](https://www.dropbox.com/s/eoz0946ifeac1wd/action_graphs.tar.gz) (90 MB)
+To download the pretrained models go [here](https://www.dropbox.com/s/eoz0946ifeac1wd/action_graphs.tar.gz) for Dropbox and [here](https://drive.google.com/a/ucdavis.edu/uc?id=1ziTjwsQQU1sVUFHQ3g7i0XKsngS68Av-&export=download) for Google Drive (90 MB)
 
 Run the following commands
 ```bash
