@@ -1,7 +1,7 @@
 ## Paper
 This repository provides code for:
 
-[Action Graphs: Weakly-supervised Action Localization with Graph Convolution Networks.](https://arxiv.org/abs/1704.04023) Maheen Rashid, Hedvig Kjellström, Yong Jae Lee. WACV 2020.
+[Action Graphs: Weakly-supervised Action Localization with Graph Convolution Networks.](https://arxiv.org/abs/2002.01449) Maheen Rashid, Hedvig Kjellström, Yong Jae Lee. WACV 2020.
 
 If you find this repo useful please cite our work:
 ```bib
