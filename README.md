@@ -44,7 +44,7 @@ Download features extracted from Kinetrics pretrained i3D
 
 [UCF101 Features (Google Drive link)](https://drive.google.com/a/ucdavis.edu/uc?id=1TcrnAoW6BBOYsi9wnIxUnkAk4d_YlBkc&export=download) (5.5 GB)
 
-[ActivityNet Features (Dropbox link)](https://www.dropbox.com/s/8oejezm0dvzoxyw/activitynet_i3d.tar.gz) (9.2 GB)
+[ActivityNet Features (Dropbox link)](https://www.dropbox.com/s/8oejezm0dvzoxyw/activitynet_i3d.tar.gz) (8.6 GB)
 
 [Charades Features]() (Will be uploaded soon)
 
