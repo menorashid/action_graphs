@@ -26,7 +26,7 @@ Markdown==2.6.11
 matplotlib==2.2.2
 mock==2.0.0
 numpy==1.15.0
-opencv-python==3.4.2.17
+opencv-python==4.2.0.32
 pbr==4.2.0
 Pillow==5.2.0
 pkg-resources==0.0.0
