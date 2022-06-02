@@ -19,7 +19,7 @@ futures==3.2.0
 gast==0.2.0
 grpcio==1.14.0
 h5py==2.9.0
-html5lib==0.9999999
+html5lib==0.99999999
 idna==2.7
 kiwisolver==1.0.1
 Markdown==2.6.11
