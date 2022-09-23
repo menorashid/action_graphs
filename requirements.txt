@@ -30,7 +30,7 @@ opencv-python==3.4.2.17
 pbr==4.2.0
 Pillow==5.2.0
 pkg-resources==0.0.0
-protobuf==3.6.0
+protobuf==3.18.3
 pycparser==2.18
 pyparsing==2.2.0
 python-dateutil==2.7.3
